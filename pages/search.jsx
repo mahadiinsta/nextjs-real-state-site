@@ -1,7 +1,7 @@
 import { Box, Flex } from '@chakra-ui/layout'
-import { Icon, Text } from '@chakra-ui/react'
+import { Icon, Text, useColorMode } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { BsFilter } from 'react-icons/bs'
 import Property from '../components/Property'
 import SearchFilters from '../components/SearchFilters'
@@ -10,6 +10,7 @@ import { baseUrl, fetchApi } from '../utils/fetchApi'
 const Search = ({ properties }) => {
   const [searchFilters, setSearchFilters] = useState(false)
   const router = useRouter()
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Box>
       <Flex
@@ -23,6 +24,7 @@ const Search = ({ properties }) => {
         alignItems="center"
         p="2"
         onClick={() => setSearchFilters((prevFilters) => !prevFilters)}
+        style={{ color: '#1A202C' }}
       >
         <Text align="center">Search Inputs By filter</Text>
         <Icon w="7" paddingLeft="2" as={BsFilter}></Icon>
